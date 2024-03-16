@@ -18,7 +18,9 @@ class Ordenacao:
                 if menor_num > number and number not in self.novo_array:
                     menor_num = number
                 elif menor_num < number and number not in self.novo_array:
+                    print(maior_num)
                     maior_num = number
+
             if menor_num not in self.novo_array:
                 self.novo_array.append(menor_num)
             elif maior_num not in self.novo_array:
@@ -26,8 +28,13 @@ class Ordenacao:
         return self.novo_array
 
     def toString(self):
-        
-        return
+        texto = ''
+        array = self.ordena()
+        for number in array:
+            texto += str(number)
+            if number != array[-1]:
+                texto += ','
+        return texto
 
-sla = Ordenacao([ 9, 0 ,5 ,2 ,10])
+sla = Ordenacao([1,2,3,4,5])
 print(sla.ordena())
