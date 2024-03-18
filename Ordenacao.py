@@ -30,3 +30,4 @@ class Ordenacao:
                 texto += ','
             contador += 1
         return texto
+saSasASasSAADA = 4
