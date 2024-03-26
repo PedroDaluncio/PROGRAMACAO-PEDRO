@@ -6,13 +6,15 @@ class Aluno:
         self.__matricula = matricula
         self.__nome = nome
 
-    def get_matricula(self):
+    @property
+    def matricula(self):
         return self.__matricula
 
-    def set_matricula(self,matricula):
+    @matricula.setter
+    def matricula(self,matricula):
         if matricula > 0:
             self.__matricula = matricula
         else:
-            #retorna um erro
+            #o raise Exception faz um erro ocorrer
             raise Exception('comando inválido')
         return self.__matricula
