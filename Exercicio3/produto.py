@@ -3,25 +3,20 @@ from categoria_produto import CategoriaProduto
 
 
 class Produto():
-    def __init__(self, codigo, descricao, quantidade, preco_unitario, categoria_produto, cliente):
+    def __init__(self, codigo, descricao, categoria_produto):
         self.__codigo = None
         self.__descricao = None
-        self.__quantidade = None
-        self.__preco_unitario = None
         self.__categoria_produto = None
-        self.__cliente = None
+        self.__quantidade = 0
+        self.__preco_total = 0
+        self.__preco_unitario = 0
+        self.__cliente = Cliente
         if isinstance(codigo, int):
             self.__codigo = codigo
         if isinstance(descricao, str):
             self.__descricao = descricao
-        if isinstance(quantidade, int):
-            self.__quantidade = quantidade
-        if isinstance(preco_unitario, float):
-            self.__preco_unitario = preco_unitario
         if isinstance(categoria_produto, CategoriaProduto):
-            self.__categoria_produto = CategoriaProduto
-        if isinstance(cliente, Cliente):
-            self.__cliente = Cliente
+            self.__categoria_produto = categoria_produto
 
     @property
     def codigo(self):
@@ -30,7 +25,6 @@ class Produto():
     @codigo.setter
     def codigo(self, codigo):
         self.__codigo = codigo
-        return self.__codigo
 
     @property
     def descricao(self):
@@ -39,7 +33,6 @@ class Produto():
     @descricao.setter
     def descricao(self, descricao):
         self.__descricao = descricao
-        return self.__descricao
 
     @property
     def categoria_produto(self):
@@ -48,7 +41,6 @@ class Produto():
     @categoria_produto.setter
     def categoria_produto(self, categoria_produto):
         self.__codigo = categoria_produto
-        return self.__categoria_produto
 
     @property
     def quantidade(self):
@@ -57,7 +49,6 @@ class Produto():
     @quantidade.setter
     def quantidade(self, quantidade):
         self.__quantidade = quantidade
-        return self.__quantidade
 
     @property
     def preco_unitario(self):
@@ -66,13 +57,15 @@ class Produto():
     @preco_unitario.setter
     def preco_unitario(self, preco_unitario):
         self.__preco_unitario = preco_unitario
-        return self.__preco_unitario
 
     @property
     def cliente(self):
         return self.__cliente
 
     @cliente.setter
-    def cliente(self):
+    def cliente(self, cliente):
         self.__cliente = cliente
-        return self.__cliente
+
+    def preco_total(self):
+        self.__preco_total = float(self.__preco_unitario * self.__quantidade)
+        return self.__preco_total
