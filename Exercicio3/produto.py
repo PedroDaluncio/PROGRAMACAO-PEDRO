@@ -73,6 +73,6 @@ class Produto():
         return self.__cliente
 
     @cliente.setter
-    def cliente(self):
+    def cliente(self, cliente):
         self.__cliente = cliente
         return self.__cliente
