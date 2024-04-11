@@ -13,5 +13,6 @@ class Biblioteca:
         if isinstance(livro, Livro) and livro in self.__livros:
             self.__livros.remove(livro)
 
+    @property
     def livros(self):
         return self.__livros
