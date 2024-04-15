@@ -11,6 +11,6 @@ class CategoriaProduto:
         return self.__titulo
 
     @titulo.setter
-    def titulo(self,titulo):
+    def titulo(self, titulo):
         self.__titulo = titulo
         return self.__titulo
