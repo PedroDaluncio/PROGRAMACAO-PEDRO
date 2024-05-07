@@ -8,9 +8,10 @@ class Carta(AbstractCarta):
         self.__personagem = personagem
 
     def valor_total_carta(self) -> int:
-        valor_carta = self.__personagem.energia + self.__personagem.habilidade \
+        valor_carta = self.__personagem.energia + \
+            self.__personagem.habilidade \
             + self.__personagem.resistencia + \
-            self.__personagem.velocidade + self.__personagem.tipo
+            self.__personagem.velocidade
         return valor_carta
 
     @property

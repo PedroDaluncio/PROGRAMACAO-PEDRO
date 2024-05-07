@@ -22,8 +22,8 @@ class ControladorJogo(AbstractControladorJogo):
                                    resistencia: int,
                                    tipo: Tipo) -> Personagem:
         if isinstance(energia, int) and isinstance(habilidade, int) and \
-            isinstance(velocidade, int) and isinstance(resistencia, int) \
-            and isinstance(tipo, Tipo):
+                isinstance(velocidade, int) and isinstance(resistencia, int) \
+                and isinstance(tipo, Tipo):
             self.__personagems.append(Personagem(energia, habilidade,
                                                  velocidade, resistencia, tipo))
             return self.__personagems[-1]
@@ -59,8 +59,22 @@ class ControladorJogo(AbstractControladorJogo):
 
     def jogada(self, mesa: Mesa) -> Jogador:
         if isinstance(mesa, Mesa):
-            cartas_jogador1 = mesa.carta_jogador1
-            cartas_jogador2 = mesa.carta_jogador2
-            if cartas_jogador1.valor_total_carta > cartas_jogador2.valor_total_carta:
-                
-
+            jogador1 = mesa.jogador1
+            jogador2 = mesa.jogador2
+            carta_jogador1 = mesa.carta_jogador1
+            carta_jogador2 = mesa.carta_jogador2
+            if carta_jogador1.valor_total_carta() > \
+                    carta_jogador2.valor_total_carta():
+                jogador1.inclui_carta_na_mao(carta_jogador1)
+                jogador1.inclui_carta_na_mao(carta_jogador2)
+            elif carta_jogador1.valor_total_carta < \
+                    carta_jogador2.valor_total_carta:
+                jogador2.inclui_carta_na_mao(carta_jogador1)
+                jogador2.inclui_carta_na_mao(carta_jogador2)
+            else:
+                jogador1.inclui_carta_na_mao(carta_jogador1)
+                jogador2.inclui_carta_na_mao(carta_jogador2)
+            if not jogador1.mao:
+                return jogador2
+            elif not jogador2.mao:
+                return jogador1
